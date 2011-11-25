@@ -37,11 +37,7 @@ def compareFollowers():
 	print u2diff
 
 def getFollowers(user):
-	followers = []
-	for follower in tweepy.Cursor(api.followers, user=user).items():
-		followers.append(follower.screen_name)
-	return followers
+	return [follower.screen_name for follower in tweepy.Cursor(tweepy.API().followers, user=user).items()]
 
 if __name__ == "__main__":
-	api = tweepy.API()
 	compareFollowers()
